@@ -76,7 +76,8 @@ export class HomePage {
 
             this.savedLocalStorage();
           }
-        }, {
+        },
+         {
           text: 'Cancelar',
           icon: 'close',
           handler: () => {
