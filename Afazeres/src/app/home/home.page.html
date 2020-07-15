@@ -1,0 +1,34 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-title>
+      AFAZERES 
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-list class="animated zoomInRight">
+  <ion-item *ngIf="listTasks.length < 1">
+    <ion-label>Você não possui Tarefas</ion-label>
+  </ion-item>
+    <ion-item-sliding *ngFor="let task of listTasks">
+      <ion-item (click)="openAction(task)">
+        <ion-label *ngIf="!task.done">{{task.name}}</ion-label>
+        <ion-label *ngIf="task.done"><del>{{task.name}}</del></ion-label>
+
+        <ion-icon slot="start" *ngIf="!task.done" name="radio-button-off"></ion-icon>
+        <ion-icon slot="start" color="success" *ngIf="task.done" name="checkmark-circle-outline"></ion-icon>
+      </ion-item>
+      <ion-item-options side="end">
+        <ion-item-option (click)="remove(task)">Excluir</ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding> 
+
+</ion-list>  
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button color="primary" (click)="showAdd()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>
