@@ -77,12 +77,18 @@ export class HomePage {
             this.savedLocalStorage();
           }
         },
-         {
-          text: 'Cancelar',
-          icon: 'close',
-          handler: () => {
-          }
-        }]
+        {
+         text: 'Cancelar',
+         icon: 'close',
+         handler: () => {
+         }
+       },
+       {
+        text: 'Para excluir, pressione no item, deslize para esquerda e clique em Excluir',
+        icon: 'information',
+        handler: () => {
+        }
+      }]
       });
       await actionSheet.present();
     }
