@@ -57,10 +57,26 @@ export class HomePage {
         toast.present();
         return;
       }
-
       let task = {name : taskRead, done: false}
       this.listTasks.push(task);
       this.savedLocalStorage();
+
+      if(taskRead.length > 25){
+        const alert = await this.alertCtl.create({
+          header: 'Tarefas muito grande podem ultrapassar o tamanho de sua tela!',
+          buttons: [
+            {
+              text: 'Ok',
+              role: 'cancel',
+              handler: () => {
+                console.log('Confirm Cancel');
+              }
+            }
+          ]
+        });
+    
+        await alert.present();
+      }
     }
     savedLocalStorage(){
       localStorage.setItem('taskdb', JSON.stringify(this.listTasks))
@@ -84,7 +100,7 @@ export class HomePage {
          }
        },
        {
-        text: 'Para excluir, pressione no item, deslize para esquerda e clique em Excluir',
+        text: 'Para excluir pressione no item, deslize para esquerda e clique em Excluir',
         icon: 'information',
         handler: () => {
         }
